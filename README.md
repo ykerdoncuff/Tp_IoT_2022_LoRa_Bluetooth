@@ -1,5 +1,4 @@
-# Tp_IoT_2022_LoRa_Bluetooth
-
+# Tp_IoT_2022_LoRa
 ## 1. Receiver :
  
 ### 1. Récupération d'un paquet Mqtt sur test.mosquitto.org :  srt/nom-groupe
@@ -10,13 +9,6 @@
 
 ## 2. Sender :
 
-### Envoyer les données de connexion LoRa sur test.mosquitto.org au topic srt/nom-groupe.
+### Envoyer les données de connexion LoRa sur test.mosquitto.org au topic srt5/GEFY.
 
-## 3. Ensuite...
-
-### 1. Ajouter une fonction permettant de switcher entre Sender et Receiver
-
-### 2. Sur le sender, échangez la partie LoRa par du bluetooth (ou BLE)
-
-### 3. Refaire la partie cliente pour répondre au bluetooth
 
