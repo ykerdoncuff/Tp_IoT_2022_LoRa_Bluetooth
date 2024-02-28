@@ -1,11 +1,14 @@
 # Tp_IoT_2022_LoRa
 
 Auteurs : Yann KERDONCUFF et Florian DURAND
+En collaboration avec Gabin LE BRETON et Erwan DREAN
+
 ## Sujet du TP :
 
 Dans ce projet nous allons réaliser une communication IoT utilisant la technologie LoRa pour l'échange de données entre un émetteur et un récepteur. Il implique la configuration des dispositifs pour se connecter à un réseau WiFi, l'utilisation du protocole MQTT pour récupérer ou publier des paramètres de configuration LoRa sur un broker MQTT. Voici un diagramme de séquence des échanges qui seront réalisés.
 
 ![mermaid-diagram-2024-02-28-144220](https://github.com/ykerdoncuff/Tp_IoT_2022_LoRa_Bluetooth/assets/57559729/0f7973e9-8dfe-447a-95c8-a9c9d423ace3)
+
 
 ## 1. Receiver :
 
@@ -47,6 +50,20 @@ Le récepteur effectue les opérations suivantes :
   }
   ```
 - **Écoute des données LoRa** transmises par l'émetteur, en utilisant les paramètres récupérés via MQTT.
+  ```
+  void lora_init() {
+    if (!LoRa.begin(frequence)) {
+      Serial.println("Starting LoRa failed!");
+      while (1);
+    }
+    Serial.println("Starting LoRa good!");
+    LoRa.setSpreadingFactor(sf1); // Définit le facteur d'étalement
+    LoRa.setSignalBandwidth(sb1); // Définit la bande passante du signal
+    
+    Serial.println("LoRa initialized!");
+  }
+  ```
+  Cette fonction va initialiser le LoRa, l'écoute des paquets va se trouver dans la loop.
 
 ### Fonctionnalités clés :
 
