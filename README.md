@@ -1,7 +1,9 @@
 # Tp_IoT_2022_LoRa
 
 Auteurs : Yann KERDONCUFF et Florian DURAND
+
 En collaboration avec Gabin LE BRETON et Erwan DREAN
+
 
 ## Sujet du TP :
 
@@ -10,7 +12,7 @@ Dans ce projet nous allons réaliser une communication IoT utilisant la technolo
 ![mermaid-diagram-2024-02-28-144220](https://github.com/ykerdoncuff/Tp_IoT_2022_LoRa_Bluetooth/assets/57559729/0f7973e9-8dfe-447a-95c8-a9c9d423ace3)
 
 
-## 1. Receiver :
+## 1. Receiver (Yann KERDONCUFF et Florian DURAND):
 
 Le récepteur effectue les opérations suivantes :
 
@@ -72,7 +74,7 @@ Le récepteur effectue les opérations suivantes :
 - Configuration du module LoRa avec ces paramètres.
 - Réception et affichage des données LoRa.
 
-## 2. Sender :
+## 2. Sender (Gabin LE BRETON et Erwan DREAN):
 
 L'émetteur effectue les opérations suivantes :
 
