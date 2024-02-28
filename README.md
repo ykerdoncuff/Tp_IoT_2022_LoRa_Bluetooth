@@ -12,7 +12,40 @@ Dans ce projet nous allons réaliser une communication IoT utilisant la technolo
 Le récepteur effectue les opérations suivantes :
 
 - **Connexion à un point d'accès WiFi**
+  ```
+  WiFi.begin(ssid, password); // Connexion au réseau WiFi
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(2000);
+    Serial.println("Connecting to WiFi..");
+  }
+  Serial.println("Connected to the WiFi network");
+  ```
 - **Récupération d'un paquet MQTT** sur `test.mosquitto.org` du topic `srt5/GEFY`. et lecture du topic MQTT pour obtenir les valeurs nécessaires à la communication LoRa (fréquence, facteur d'étalement, bande passante).
+  ```
+  void callback(char *topic, byte *payload, unsigned int length) {
+  if (!doCallback) return;
+  Serial.print("Message arrived in topic: ");
+  Serial.println(topic);
+  
+  char message[length + 1];  // Tableau pour stocker le message reçu
+  for (unsigned int i = 0; i < length; i++) {
+    message[i] = (char)payload[i];
+      }
+  message[length] = "\0"; // Ajoute le caractère de fin de chaîne
+   }
+ 
+  // Extrait les paramètres de configuration LoRa du message
+  sscanf(message, "%d;%d;%d", &frequence, &sf1, &sb1);
+  
+  Serial.println(frequence);
+  Serial.println(sf1);
+  Serial.println(sb1);
+  
+  lora_init(); // Initialise le module LoRa avec les paramètres reçus
+  
+  doCallback = false; // Empêche l'exécution répétée du callback
+  }
+  ```
 - **Écoute des données LoRa** transmises par l'émetteur, en utilisant les paramètres récupérés via MQTT.
 
 ### Fonctionnalités clés :
